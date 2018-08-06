@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Switch, Route} from "react-router-dom";
 import MarketsHome from "./MarketsHome";
+import Dashboard from './Dashboard';
 
 class Markets extends Component {
   render() {
@@ -8,7 +9,7 @@ class Markets extends Component {
       <main>
         <Switch>
           <Route exact path="/markets" component={MarketsHome} />
-          <Route path="/market/:markets" component={MarketsHome} />
+          <Route path="/markets/:markets" component={Dashboard} />
         </Switch>
       </main>
     );
