@@ -1,0 +1,34 @@
+{
+	"name": "roostertest",
+	"version": "0.0.0",
+	"description": "Hello Expo!",
+	"author": null,
+	"private": true,
+	"main": "node_modules/expo/AppEntry.js",
+	"dependencies": {
+		"antd-mobile": "^1.7.2",
+		"expo": "28.0.0",
+		"firebase": "^4.13.1",
+		"immutable": "^3.8.2",
+		"lodash": "^4.17.10",
+		"moment": "^2.22.2",
+		"native-base": "^2.7.2",
+		"react": "16.4.1",
+		"react-dom": "^16.4.1",
+		"react-instantsearch": "^4.5.2",
+		"react-native": "github:expo/react-native#sdk-28.0.0",
+		"react-native-elements": "^0.17.0",
+		"react-native-image-gradient": "^2.2.5",
+		"react-native-linear-gradient": "^2.4.0",
+		"react-native-material-dropdown": "^0.5.2",
+		"react-native-view-more-text": "^1.4.4",
+		"react-navigation": "^1.5.12",
+		"react-redux": "^5.0.7",
+		"redux": "^3.7.2",
+		"redux-persist": "^4.10.2",
+		"redux-thunk": "^2.3.0"
+	},
+	"devDependencies": {
+		"babel-plugin-import": "^1.8.0"
+	}
+}
