@@ -1,11 +1,13 @@
 import {combineReducers} from "redux";
-import {vendors, markets} from "./fetchReducers";
-import {addMarketModalOpen} from "./modalReducers";
+import {vendors, markets, singleMarketData} from "./fetchReducers";
+import {addMarketModalOpen, addMarketDateModalOpen} from "./modalReducers";
 
 const rootReducer = combineReducers({
   vendors,
   markets,
-  addMarketModalOpen
+  singleMarketData,
+  addMarketModalOpen,
+  addMarketDateModalOpen
 });
 
 export default rootReducer;

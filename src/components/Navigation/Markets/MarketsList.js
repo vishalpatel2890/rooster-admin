@@ -8,7 +8,7 @@ import {fetchMarkets, addMarketDates} from "../../../actions";
 
 import logo from "../../../logo.svg";
 import "../../../App.css";
-import "../Navigation.css";
+import "./Markets.css";
 
 class MarketsList extends Component {
   componentWillMount() {

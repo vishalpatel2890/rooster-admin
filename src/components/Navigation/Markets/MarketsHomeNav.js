@@ -7,7 +7,7 @@ import {toggleAddMarketModal} from "../../../actions";
 
 import logo from "../../../logo.svg";
 import "../../../App.css";
-import "../Navigation.css";
+import "./Markets.css";
 
 class MarketsHomeNav extends Component {
   state = {

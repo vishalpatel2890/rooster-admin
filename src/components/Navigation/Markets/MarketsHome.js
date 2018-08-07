@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 
-import {fetchVendors} from "../../../actions";
-
 import MarketsList from "./MarketsList";
 import MarketsHomeNav from "./MarketsHomeNav";
 import AddMarketModal from "./AddMarketModal";

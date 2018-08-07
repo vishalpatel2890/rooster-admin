@@ -2,10 +2,14 @@ import {
   FETCH_MARKETS_SUCCESS,
   ADD_MARKET_DATES,
   TOGGLE_MARKET_MODAL,
-  ADD_MARKET
+  TOGGLE_MARKET_DATE_MODAL,
+  ADD_MARKET,
+  FETCH_MARKET_DATA_SUCCESS
 } from "../constants/constants";
 import firebase from "firebase";
 
+
+//Fetch Markets
 export const fetchMarkets = () => {
   return dispatch => {
     firebase
@@ -17,7 +21,20 @@ export const fetchMarkets = () => {
   };
 };
 
-export const addMarketDates = ({dates, marketUid}) => {
+export const fetchSingleMarketData = (marketUid) => {
+  return dispatch => {
+    firebase
+      .database()
+      .ref("/markets/" + marketUid)
+      .on("value", snapshot => {
+        dispatch({type: FETCH_MARKET_DATA_SUCCESS, payload: snapshot.val()});
+      });
+  };
+};
+
+//Add Market Dates
+export const addMarketDates = (dates, marketUid) => {
+  console.log(dates, marketUid)
   var updates = {};
   for (const date in dates) {
     var newDateKey = firebase
@@ -40,6 +57,15 @@ export const addMarketDates = ({dates, marketUid}) => {
       });
   };
 };
+
+export const toggleAddMarketDateModal = toggle => {
+  return dispatch => {
+    dispatch({type: TOGGLE_MARKET_DATE_MODAL, payload: toggle});
+  };
+};
+
+
+//Add Market
 
 export const toggleAddMarketModal = toggle => {
   return dispatch => {

@@ -1,6 +1,7 @@
 import {
   FETCH_VENDORS_SUCCESS,
-  FETCH_MARKETS_SUCCESS
+  FETCH_MARKETS_SUCCESS,
+  FETCH_MARKET_DATA_SUCCESS
 } from "../constants/constants";
 
 export const vendors = (state = {}, action) => {
@@ -20,3 +21,12 @@ export const markets = (state = {}, action) => {
       return state;
   }
 };
+
+export const singleMarketData = (state = {}, action) => {
+  switch (action.type) {
+    case FETCH_MARKET_DATA_SUCCESS:
+    return action.payload;
+    default:
+      return state
+  }
+}
