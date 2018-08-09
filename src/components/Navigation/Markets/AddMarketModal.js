@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {Modal, Input, Button, Form, Icon, Upload} from "antd";
+import {Modal, Input, Form, Icon} from "antd";
 import firebase from "firebase";
-import FileUploader from "react-firebase-file-uploader";
 import CustomUploadButton from "react-firebase-file-uploader/lib/CustomUploadButton";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -141,11 +140,7 @@ class AddMarketModal extends Component {
   render() {
     const {
       marketLogoURL,
-      address,
-      addressErrorMessage,
-      latitude,
-      longitude,
-      isGeocoding
+      address
     } = this.state;
 
     const uploadButton = (

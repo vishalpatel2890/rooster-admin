@@ -2,13 +2,13 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {Menu, Icon} from "antd";
 
-import {toggleAddVendorModal} from '../../../actions'
+import {toggleAddProductModal, toggleAddVendorMarketsModal} from '../../../actions'
 
 
 import "../../../App.css";
 import "../Navigation.css";
 
-class VendorsHomeNav extends Component {
+class DashboardNav extends Component {
   state = {
     collapsed: false
   };
@@ -19,9 +19,14 @@ class VendorsHomeNav extends Component {
     });
   };
 
-  handleAddVendorModalOpen = () => {
+  handleAddProductModalOpen = () => {
     const toggle = true;
-    this.props.toggleAddVendorModal(toggle);
+    this.props.toggleAddProductModal(toggle);
+  }
+
+  handleAddVendorMarketsModalOpen = () => {
+    const toggle = true;
+    this.props.toggleAddVendorMarketsModal(toggle);
   }
 
   render() {
@@ -34,9 +39,13 @@ class VendorsHomeNav extends Component {
           <Icon type="verticle-left"/>
           <span>Menu</span>
         </Menu.Item>
-        <Menu.Item onClick={this.handleAddVendorModalOpen} key="2">
+        <Menu.Item onClick={this.handleAddProductModalOpen} key="2">
           <Icon type="plus"/>
-          <span>Add Vendor</span>
+          <span>Add Product</span>
+        </Menu.Item>
+        <Menu.Item onClick={this.handleAddVendorMarketsModalOpen} key="2">
+          <Icon type="plus"/>
+          <span>Add Market</span>
         </Menu.Item>
       </Menu>
     </div>);
@@ -46,4 +55,4 @@ class VendorsHomeNav extends Component {
 const mapStateToProps = state => {
  return {};
 };
-export default connect(mapStateToProps, {toggleAddVendorModal})(VendorsHomeNav);
+export default connect(mapStateToProps, {toggleAddProductModal, toggleAddVendorMarketsModal})(DashboardNav);

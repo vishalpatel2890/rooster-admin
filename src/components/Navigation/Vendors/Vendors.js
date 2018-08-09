@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {Switch, Route} from "react-router-dom";
+
 import VendorsHome from "./VendorsHome";
+import Dashboard from './Dashboard';
 
 class Vendors extends Component {
   render() {
@@ -8,7 +10,7 @@ class Vendors extends Component {
       <main>
         <Switch>
           <Route exact path="/vendors" component={VendorsHome} />
-          <Route path="/vendors/:vendor" component={VendorsHome} />
+          <Route path="/vendors/:vendor" component={Dashboard} />
         </Switch>
       </main>
     );

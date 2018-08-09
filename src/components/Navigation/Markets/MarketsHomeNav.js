@@ -1,11 +1,9 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import _ from "lodash";
-import {Menu, Button, Avatar, Icon} from "antd";
+import {Menu, Icon} from "antd";
 
 import {toggleAddMarketModal} from "../../../actions";
 
-import logo from "../../../logo.svg";
 import "../../../App.css";
 import "./Markets.css";
 
@@ -27,7 +25,7 @@ class MarketsHomeNav extends Component {
   };
 
   render() {
-    const SubMenu = Menu.SubMenu;
+
     return (
       <div>
         <Menu

@@ -9,3 +9,6 @@
 .Vendors-page-left{
   flex: 0.15;
 }
+.dashboard-product-list{
+  margin: 1em;
+}

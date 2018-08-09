@@ -37,3 +37,19 @@
 .Dashboard-date-list {
   flex: 0.15;
 }
+
+.Dashboard-list-item {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
+.Dashboard-list-item-row-time {
+  align-self: center;
+  color: #3b477c;
+}
+
+.ant-list-item-content-single {
+    justify-content: center !important;
+}

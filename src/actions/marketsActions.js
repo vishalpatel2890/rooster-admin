@@ -33,30 +33,29 @@ export const fetchSingleMarketData = (marketUid) => {
 };
 
 //Add Market Dates
-export const addMarketDates = (dates, marketUid) => {
-  console.log(dates, marketUid)
-  var updates = {};
-  for (const date in dates) {
-    var newDateKey = firebase
-      .database()
-      .ref()
-      .child("/markets/" + marketUid + "/dates")
-      .push().key;
-    updates["/markets/" + marketUid + "/dates/" + newDateKey] = {
-      date: dates[date]
-    };
-  }
+export const addMarketDates = ({date, timeStart, timeEnd, marketUid}) => {
+
+
   return dispatch => {
-    console.log(updates);
     firebase
       .database()
-      .ref()
-      .update(updates)
+      .ref("/markets/" + marketUid + "/dates/" )
+      .push({date, timeStart, timeEnd})
       .then(() => {
         dispatch({type: ADD_MARKET_DATES});
       });
   };
 };
+
+export const deleteMarketDate = (marketUid, dateUid) => {
+  return dispatch => {
+    firebase
+      .database()
+      .ref("/markets/" + marketUid + "/dates/" + dateUid)
+      .remove()
+      .then(() => console.log('done'))
+  }
+}
 
 export const toggleAddMarketDateModal = toggle => {
   return dispatch => {

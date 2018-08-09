@@ -4,7 +4,7 @@ import _ from "lodash";
 import {List, Avatar, Icon} from "antd";
 import {Link} from "react-router-dom";
 
-import {fetchMarkets, addMarketDates} from "../../../actions";
+import {fetchMarkets} from "../../../actions";
 
 import logo from "../../../logo.svg";
 import "../../../App.css";
@@ -54,7 +54,7 @@ class MarketsList extends Component {
                 <IconText type="like-o" text="156" />,
                 <IconText type="message" text="2" />,
                 <Link to={{pathname: `markets/${market.uid}`}}>
-                  <a>Dashboard</a>
+                  Dashboard
                 </Link>,
                 <a>Edit</a>
               ]}
@@ -84,7 +84,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    fetchMarkets,
-    addMarketDates
+    fetchMarkets
   }
 )(MarketsList);

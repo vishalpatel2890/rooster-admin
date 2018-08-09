@@ -4,7 +4,7 @@ import {Switch, Route} from "react-router-dom";
 import Vendors from "./Navigation/Vendors/Vendors";
 import Markets from "./Navigation/Markets/Markets";
 import Navigation from "./Navigation/Navigation.js";
-import Product from "./Navigation/Product";
+import Product from "./Navigation/Products/Products";
 
 class Main extends Component {
   render() {

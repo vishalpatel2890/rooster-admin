@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import _ from 'lodash';
 import {List, Button, Tooltip} from 'antd'
 
-import {fetchSingleMarketData, addMarketDates, toggleAddMarketDateModal} from '../../../actions';
+import {fetchSingleMarketData, addMarketDates, toggleAddMarketDateModal, deleteMarketDate} from '../../../actions';
 
 import AddMarketDateModal from './AddMarketDateModal';
 import "./Markets.css";
@@ -21,6 +21,11 @@ class Dashboard extends Component {
     this.props.toggleAddMarketDateModal(toggle);
   };
 
+  deleteDate = (dateUid) => {
+    const marketUid = this.props.match.params.markets
+    this.props.deleteMarketDate(marketUid, dateUid)
+  }
+
   render() {
 
     return (
@@ -31,9 +36,15 @@ class Dashboard extends Component {
           footer={<div><Tooltip placement="bottom" title='Add Dates'><Button onClick={this.handleAddMarketDateModalOpen}>+</Button></Tooltip></div>}
           bordered
           dataSource={this.props.marketDates}
-          renderItem={item => (<List.Item>{item.date}</List.Item>)}
+          renderItem={item => (
+            <List.Item>
+            <div className={"Dashboard-item-list"}>
+              <div>{item.date} <Button style={{left: 10}} icon="delete" onClick={()=> this.deleteDate(item.uid)}/> </div>
+              <div className="Dashboard-list-item-row-time">{item.timeStart} - {item.timeEnd}</div>
+            </div>
+          </List.Item>)}
         />
-        <AddMarketDateModal />
+        <AddMarketDateModal marketUid={this.props.match.params.markets}/>
         </div>
       </div>
 
@@ -46,4 +57,4 @@ const mapStateToProps = state => {
   return {singleMarketData, marketDates};
 };
 
-export default connect(mapStateToProps, {fetchSingleMarketData, addMarketDates, toggleAddMarketDateModal})(Dashboard)
+export default connect(mapStateToProps, {fetchSingleMarketData, addMarketDates, toggleAddMarketDateModal, deleteMarketDate})(Dashboard)

@@ -1,0 +1,28 @@
+.Product-page {
+  display: flex;
+
+}
+
+.Categories-list {
+  flex: 0.65;
+
+}
+
+.Product-types-list {
+  flex: 0.35;
+
+}
+
+.ant-card-body {
+  padding: 0px !important;
+  zoom: 1;
+  align-self: center;
+}
+
+.ant-card-head {
+  height: 40px;
+}
+
+.ant-card-bordered  {
+  width: 200px;
+}

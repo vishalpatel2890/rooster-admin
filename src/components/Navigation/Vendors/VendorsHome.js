@@ -2,13 +2,13 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import _ from "lodash";
 import {List, Avatar, Icon} from "antd";
+import {Link} from "react-router-dom";
 
 import {fetchVendors} from "../../../actions";
 
 import VendorsHomeNav from "./VendorsHomeNav";
+import AddVendorModal from './AddVendorModal';
 
-
-import logo from "../../../logo.svg";
 import "../../../App.css";
 import "../Navigation.css";
 
@@ -53,19 +53,21 @@ class VendorsHome extends Component {
             }
             renderItem={vendor => (
               <List.Item
-                key={vendor.vendor}
+                key={vendor.uid}
                 actions={[
                   <IconText type="star-o" text="156" />,
                   <IconText type="like-o" text="156" />,
                   <IconText type="message" text="2" />,
-                  <a>Dashboard</a>,
+                  <Link to={{pathname: `vendors/${vendor.uid}`}}>
+                  <div>Dashboard</div>
+                </Link>,
                   <a>Edit</a>
                 ]}
-                extra={<img width={272} alt="logo" src={vendor.uri} />}
+                extra={<img width={272} alt="logo" src={vendor.logo} />}
               >
                 <List.Item.Meta
-                  avatar={<Avatar src={vendor.uri} />}
-                  title={vendor.vendor}
+                  avatar={<Avatar src={vendor.logo} />}
+                  title={vendor.uid}
                   description={vendor.description}
                 />
                 {vendor.content}
@@ -73,6 +75,7 @@ class VendorsHome extends Component {
             )}
           />
         </div>
+      <AddVendorModal/>
       </div>
     );
   }

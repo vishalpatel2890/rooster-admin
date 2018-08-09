@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Icon } from 'antd';
+import { Button} from 'antd';
 import { Link } from "react-router-dom";
 
-import logo from '../../logo.svg';
 import '../../App.css';
 
 class Navigation extends Component {
