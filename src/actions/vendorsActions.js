@@ -56,19 +56,25 @@ export const fetchVendorProducts = (vendorUid) => {
   };
 };
 
-export const addVendorMarkets = () => {
-  return dispatch => {
-    firebase
-      .database()
-      .ref("/vendors")
-      .child()
-      .set()
-      .then(() => {
-        dispatch({type: ADD_VENDOR});
-      });
-  };
-};
+export const addVendorMarkets = ({selectedMarket, selectedDatesObject, vendorProducts, vendorUid}) => {
+  console.log({selectedMarket, selectedDatesObject, vendorProducts, vendorUid});
+  var updates = {};
 
+  for (var date in selectedDatesObject) {
+    console.log(date)
+    var newDateKey = firebase.database().ref().child("/vendors/" + vendorUid + "/markets/" + selectedMarket).push().key;
+    updates["/vendors/" + vendorUid + "/markets/" + selectedMarket + "/" + selectedDatesObject[date]['uid'] ] = selectedDatesObject[date]
+    for (var product in vendorProducts) {
+      updates["/products/" + product + "/markets/" + selectedMarket  + "/" + selectedDatesObject[date]['uid']] = selectedDatesObject[date]
+    }
+  }
+
+  return dispatch => {
+    firebase.database().ref().update(updates).then(() => {
+      console.log('dates added')
+    })
+  }
+}
 
 
 export const toggleAddVendorModal = toggle => {

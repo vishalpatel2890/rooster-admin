@@ -11,8 +11,11 @@ export const addProduct = ({
   unit,
   productImagesURLObject
 }) => {
+
   var newProductKey = firebase.database().ref().child("/products/").push().key;
+
   var updates = {};
+
   updates["/products/" + newProductKey] = {
     images: "",
     productName,
@@ -22,14 +25,18 @@ export const addProduct = ({
     price,
     unit
   };
+
   updates["/productsByVendor/" + vendorUid + "/" + newProductKey] = {productName, productType: selectedProductType, price, unit};
   updates["/productsByProductType/" + selectedProductType + "/" + newProductKey] = {productName, price, unit, vendor: vendorUid};
+
   var imageUpdates = {}
+
   for (var image in productImagesURLObject) {
     var newImageKey = firebase.database().ref().child("/products/" + newProductKey + "/images").push().key;
     imageUpdates["/products/" + newProductKey + "/images/" + newImageKey] = productImagesURLObject[image]
     imageUpdates["/productsByVendor/" + vendorUid + "/" + newProductKey + "/images/" + newImageKey] = productImagesURLObject[image]
   }
+  
   return dispatch => {
     firebase.database().ref().update(updates).then(() => {
       console.log('product added')
