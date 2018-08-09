@@ -66,6 +66,7 @@ export const addVendorMarkets = ({selectedMarket, selectedDatesObject, vendorPro
     updates["/vendors/" + vendorUid + "/markets/" + selectedMarket + "/" + selectedDatesObject[date]['uid'] ] = selectedDatesObject[date]
     for (var product in vendorProducts) {
       updates["/products/" + product + "/markets/" + selectedMarket  + "/" + selectedDatesObject[date]['uid']] = selectedDatesObject[date]
+      
     }
   }
 
